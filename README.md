@@ -1,6 +1,7 @@
 # Gerenciador de Tarefas com Calendário (Todo List 2.0)
 
 Uma aplicação web moderna e responsiva para gerenciamento de tarefas pessoais, integrada a um calendário mensal interativo. Desenvolvida com HTML5, CSS3 e JavaScript puro (Vanilla JS), com foco em usabilidade e persistência de dados local.
+🔗 Acesse o projeto: https://gameredija.github.io/task-calendar/
 
 ## ✨ Funcionalidades
 
