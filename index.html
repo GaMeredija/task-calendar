@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Lista de Tarefas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Lista de Tarefas</h1>
+    <p class="subtitulo">Exemplo simples de aplicação de lista de tarefas.</p>
+  </header>
+
+  <main>
+    <div class="layout-container">
+      <aside class="left-panel">
+        <!-- Calendário Visual (Movido para painel esquerdo) -->
+        <section class="calendario-container" aria-label="Calendário de tarefas">
+          <header class="calendario-header">
+            <button type="button" id="btn-mes-anterior" aria-label="Mês anterior">&lt;</button>
+            <span id="titulo-calendario"></span>
+            <button type="button" id="btn-mes-proximo" aria-label="Próximo mês">&gt;</button>
+          </header>
+          <div class="calendario-dias-semana">
+            <span title="Domingo">D</span>
+            <span title="Segunda-feira">S</span>
+            <span title="Terça-feira">T</span>
+            <span title="Quarta-feira">Q</span>
+            <span title="Quinta-feira">Q</span>
+            <span title="Sexta-feira">S</span>
+            <span title="Sábado">S</span>
+          </div>
+          <div id="calendario-grid" class="calendario-grid"></div>
+        </section>
+      </aside>
+
+      <div class="right-panel">
+        <section aria-labelledby="titulo-form-tarefas">
+          <h2 id="titulo-form-tarefas">Adicionar nova tarefa</h2>
+
+          <form id="form-tarefas">
+            <div class="campo-formulario">
+              <label for="input-tarefa">Tarefa:</label>
+              <input
+                type="text"
+                id="input-tarefa"
+                name="tarefa"
+                placeholder="Digite uma nova tarefa"
+                required
+              />
+            </div>
+
+            <div class="campos-data-horario">
+              <div class="campo-formulario">
+                <label for="input-data">Data:</label>
+                <input
+                  type="date"
+                  id="input-data"
+                  name="data"
+                />
+              </div>
+
+              <div class="campo-formulario">
+                <label for="input-horario">Horário:</label>
+                <input
+                  type="time"
+                  id="input-horario"
+                  name="horario"
+                />
+              </div>
+            </div>
+
+            <button type="submit" id="botao-adicionar">Adicionar</button>
+          </form>
+        </section>
+
+        <section aria-labelledby="titulo-lista-tarefas">
+          <div class="cabecalho-lista">
+            <div class="info-cabecalho">
+              <h2 id="titulo-lista-tarefas">Minhas tarefas</h2>
+              <div id="resumo-tarefas" class="resumo-tarefas">
+                <!-- Preenchido via JS -->
+              </div>
+            </div>
+            <div class="controles-cabecalho">
+              <select id="filtro-tarefas" aria-label="Filtrar tarefas">
+                <option value="all">Todas</option>
+                <option value="pending">Pendentes</option>
+                <option value="completed">Concluídas</option>
+              </select>
+              <span id="display-data-selecionada" class="display-data"></span>
+            </div>
+          </div>
+          <ul id="lista-tarefas">
+            <!-- Itens de tarefas serão inseridos aqui -->
+          </ul>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
