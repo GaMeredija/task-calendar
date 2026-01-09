@@ -32,26 +32,30 @@ body {
    ========================= */
 main {
   width: 100%;
-  max-width: 1000px;
+  max-width: 1200px; /* Aumentado levemente para telas grandes */
+  padding: 0 1rem;   /* Margem de segurança */
 }
 
 .layout-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: 320px 1fr; /* Grid fixo + flexível */
   gap: 2rem;
-  align-items: flex-start;
+  align-items: start;
+}
+
+.left-panel,
+.right-panel {
+  min-width: 0; /* Previne overflow em grids/flex */
 }
 
 .left-panel {
-  width: 320px;
-  flex-shrink: 0;
+  width: 100%; /* Ocupa a largura da célula do grid */
 }
 
 .right-panel {
-  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  min-width: 0; /* Para evitar overflow em flex items */
 }
 
 header {
@@ -840,62 +844,56 @@ ul#lista-tarefas li.cabecalho-data:first-child {
    ========================= */
 @media (max-width: 850px) {
   .layout-container {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Coluna única */
   }
 
   .left-panel {
-    /* Opcional: limitar largura do calendário em telas médias */
+    order: -1; /* Mantém o calendário no topo se desejado, ou remover para fluxo normal */
   }
 
   .calendario-container {
-    max-width: 400px;
-    margin: 0 auto;
+    max-width: 100%; /* Ocupa largura disponível */
+    margin: 0;
   }
 }
 
 @media (max-width: 480px) {
   body {
-    padding: 1rem;
+    padding: 1rem 0.5rem; /* Reduz padding lateral da página */
   }
 
   header h1 {
     font-size: 1.5rem;
   }
 
+  /* Ajustes gerais de container */
   section[aria-labelledby="titulo-form-tarefas"],
-  section[aria-labelledby="titulo-lista-tarefas"] {
-    padding: 1rem 1.1rem;
+  section[aria-labelledby="titulo-lista-tarefas"],
+  .calendario-container {
+    padding: 1rem;
+    border-radius: 0.5rem;
   }
 
-  form#form-tarefas {
-    gap: 0.875rem;
-  }
-
-  .campo-formulario {
-    gap: 0.35rem;
-  }
-
-  form#form-tarefas label {
-    font-size: 0.85rem;
-  }
-
+  /* Formulário */
   .campos-data-horario {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Empilha data e hora */
     gap: 0.75rem;
-  }
-
-  input#input-tarefa,
-  input#input-data,
-  input#input-horario {
-    padding: 0.55rem 0.7rem;
-    font-size: 0.9rem;
   }
 
   button[type="submit"] {
     width: 100%;
-    align-self: stretch;
     margin-top: 0.5rem;
-    padding: 0.65rem 1rem;
-    min-width: auto;
+  }
+
+  /* Calendário */
+  .calendario-dia {
+    font-size: 0.8rem;
+    height: auto; /* Permite ajuste de altura */
+    min-height: 2.5rem; /* Altura mínima para toque */
+  }
+  
+  .calendario-header button {
+    width: 2.5rem; /* Botões maiores para toque */
+    height: 2.5rem;
   }
 }
